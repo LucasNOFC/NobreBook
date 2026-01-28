@@ -7,7 +7,7 @@
         <div class="collapse navbar-collapse">
             <ul class="navbar-nav ms-auto">
                 <li class="nav-item d-flex">
-                    <a href="profile/{{$user->id}}" class="nav-link">Perfil</a>
+                    <a href="/profile/{{$user->id}}" class="nav-link">Perfil</a>
                     <form
                         action="{{ route('users.loggout') }}"
                         method="POST">

@@ -35,13 +35,11 @@ class UserController extends Controller
             'profile_picture' => 'required|file',
         ]);
 
-
-
         if (!empty($input['profile_picture']) && $input['profile_picture']->isValid()) {
             $url = $input['profile_picture']->store('profiles', 'public');
             $input['profile_picture'] = $url;
             User::create($input);
-            return redirect('users.index');
+            return redirect('/');
         };
     }
 
@@ -95,7 +93,10 @@ class UserController extends Controller
             if ($user) {
                 return view(
                     'users.profile',
-                    ['user' => $user]
+                    [
+                        'user' => $user,
+                        'profile' => Auth::user()->profile
+                    ]
                 );
             } else {
                 return redirect()->intended('/404');

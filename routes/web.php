@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
@@ -16,3 +17,7 @@ Route::post('/login', [UserController::class, 'access'])->name('users.access');
 Route::post('/loggout', [UserController::class, 'destroy'])->name('users.loggout');
 
 Route::get('/profile/{id}', [UserController::class, 'profile']);
+
+Route::post('/create-profile', [ProfileController::class, 'storeProfile'])->name('users.profile');
+
+Route::get('/test', [ProfileController::class, 'profileCreate']);
