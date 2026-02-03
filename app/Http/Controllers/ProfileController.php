@@ -27,4 +27,17 @@ class ProfileController extends Controller
 
         return redirect()->intended("/profile/{$user->id}");
     }
+
+    public function profileUser()
+    {
+
+        $user = Auth::user();
+
+        $profile = $user->profile()->find($user->id);
+
+        return view('users.profileuser',[
+            'user' => Auth::user(),
+            'profile' => $profile
+        ]);
+    }
 }

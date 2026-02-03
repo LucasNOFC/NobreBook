@@ -13,7 +13,7 @@ class UserController extends Controller
 
     public function index()
     {
-        return view('index.landpage', [
+        return view('index.index', [
             'user' => Auth::user()
         ]);
     }

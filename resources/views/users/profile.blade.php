@@ -1,66 +1,49 @@
 @extends('layouts.app')
 @section ('profile')
-<div class="main-container-custom">
-    <div class="mt-5 container-fluid main-profile-custom p-3 rounded m-auto">
-        <div class="w-20 h-100 main-profile-info-profile-custom">
-            <img src="{{ Storage::url($user->profile_picture) }}" alt="Foto de perfil de {{$user->name}}" class="profile-picture">
+<div class="w-full min-h-screen bg-black">
+    <div class="w-100 flex flex-col gap-5 items-center justify-center m-auto">
+        <div class="mt-5">
+            <img
+                src="{{ Storage::url($user->profile_picture) }}"
+                alt="Foto de perfil de {{$user->name}}"
+                class="w-30 h-30 rounded-full border-2 border-cyan-700 shadow-[0px_0px_15px_5px_rgba(0,_157,_255,_0.25)]">
         </div>
-        <ul class="w-100 h-100 main-profile-info-list-custom">
-            <li class="list-unstyled list-inline">
-                <h3>
-                    {{$user->name}}
-                </h3>
-            </li>
-            <li class="list-unstyled list-inline">
-                <p>
-                    Conta criada em: {{$user->created_at}}
-                </p>
-            </li>
-        </ul>
+        <div>
+            <h1 class="text-4xl text-white">
+                {{$user->name}}
+            </h1>
+        </div>
+        @if (Auth::check() && $user->id === Auth::user()->id)
+        <div class="flex items-center justify-center gap-2">
+            <a href="/profile/{{Auth::user()->id}}/edit"
+                class="p-2 
+                bg-yellow-400 
+                font-bold
+                border-t-yellow-400 
+                border-t-2
+                border-b-2
+                border-b-yellow-400 
+                cursor-pointer
+                hover:bg-yellow-600 
+                hover:border-t-yellow-600 
+                hover:border-b-yellow-600 
+                transition-all">APLICAR_MODIFICAÇÕES</a>
+            <a href="/"
+                class="               
+                font-bold
+                cursor-pointer
+                p-2
+                border-t-2
+                border-b-2
+                border-t-purple-600 
+                border-b-purple-600
+                hover:bg-purple-600
+                hover:border-t-purple-600
+                hover:border-b-purple-600
+                transition-all
+                text-purple-400">VERIFICAR_PUBLICAÇÕES</a>
+        </div>
+        @endif
     </div>
-    @if (Auth::check() && $user->id === Auth::user()->id)
-    <div class="profile-info-custom container-fluid d-flex flex-column p-3 rounded m-auto">
-        <h3>Informações</h3>
-        <form
-            action="{{ route('users.profile') }}"
-            method="POST"
-            class="container
-            info-form-container-custom">
-            @csrf
-
-            @if ($errors->any())
-            @foreach($errors->all() as $error)
-            <div>
-                {{$error}}
-            </div>
-            @endforeach
-            @endif
-
-            <div class="row more-info-container-custom">
-                <div class="col input-info-custom">
-                    <label for="fullname" class="label-user-info-custom">NOME COMPLETO</label>
-                    <input type="text" name="fullname" class="input-user-info-custom" value="{{old('fullname', $profile->fullname ?? '')}}">
-                </div>
-                <div class="col input-info-custom">
-                    <label for="title" class="label-user-info-custom">TÍTULO</label>
-                    <input type="text" name="title" class="input-user-info-custom" value="{{old('title', $profile->title ?? '')}}">
-                </div>
-                <div class="col input-info-custom">
-                    <label for="email" class="label-user-info-custom">EMAIL</label>
-                    <input type="text" name="email" class="input-user-info-custom" value="{{old('email', $user->email ?? '')}}">
-                </div>
-                <div class="col input-info-custom">
-                    <label for="adress" class="label-user-info-custom">ENDEREÇO</label>
-                    <input type="text" name="adress" class="input-user-info-custom" value="{{old('adress', $profile->adress ?? '')}}">
-                </div>
-                <div class="input-info-bio-custom">
-                    <label for="desc_bio" class="label-user-info-custom">BIOGRAFIA</label>
-                    <input type="text" name="desc_bio" class="input-user-info-custom" value="{{old('desc_bio', $profile->desc_bio ?? '')}}">
-                </div>
-            </div>
-            <button class="btn btn-primary">Salvar mudanças</button>
-        </form>
-    </div>
-    @endif
 </div>
 @endsection
