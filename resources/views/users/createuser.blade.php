@@ -17,6 +17,11 @@
         </div>
         @endforeach
         @endif
+        <div class="self-start">
+            <a href="/">
+                <img src="/storage/icons/back.png" alt="retorno" class="w-10 h-10">
+            </a>
+        </div>
         <div class="       
          flex 
          flex-col 

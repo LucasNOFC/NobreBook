@@ -16,6 +16,11 @@
     </div>
     @endforeach
     @endif
+    <div class="self-start">
+        <a href="/">
+            <img src="/storage/icons/back.png" alt="retorno" class="w-10 h-10">
+        </a>
+    </div>
     <div class="w-full p-5 gap-5 flex flex-col justify-center items-center">
         <div class="flex justify-center flex-col items-center gap-2 tracking-widest">
             <h1 class="text-4xl text-cyan-500 font-semibold [text-shadow:_2px_2px_12px_#00b3ff]">TECHWIND LOGIN</h1>

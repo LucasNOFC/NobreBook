@@ -46,6 +46,7 @@
                 </div>
                 <x-securityadvise />
                 <button class="w-96 mt-2 bg-yellow-300 font-bold p-2 cursor-pointer hover:bg-yellow-400">REGISTRAR ALTERAÇÕES</button>
+                <p class="text-gray-700 ">v4.05.87-stable_distribution</p>
             </div>
         </form>
     </div>
