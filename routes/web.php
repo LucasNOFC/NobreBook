@@ -18,7 +18,8 @@ Route::post('/loggout', [UserController::class, 'destroy'])->name('users.loggout
 
 Route::get('/profile/{id}', [UserController::class, 'profile']);
 
-Route::get('/profile/{id}/edit', [ProfileController::class, 'profileUser']);
+Route::get('/profile/{profile}/edit', [ProfileController::class, 'profileUser'])
+->middleware('auth');
 
 Route::post('/profile/{id}/edit', [ProfileController::class, 'storeProfile'])->name('users.profile');
 

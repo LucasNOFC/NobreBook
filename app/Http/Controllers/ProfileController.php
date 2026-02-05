@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
+use App\Models\Profile;
 use App\Services\ProfileService;
+use Illuminate\Auth\Access\Gate;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -25,10 +27,10 @@ class ProfileController extends Controller
         return redirect()->intended("/profile/{$user->id}");
     }
 
-    public function profileUser()
+    public function profileUser(Profile $profile)
     {
 
-        $data = $this->profileService->accessProfile();
+        $data = $this->profileService->accessProfile($profile);
 
 
         return view('users.profileuser', [
