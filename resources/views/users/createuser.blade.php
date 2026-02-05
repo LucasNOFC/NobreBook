@@ -34,11 +34,11 @@
                     <div class="border-3 border-cyan-400 w-35 h-35 rounded flex items-center justify-center">
                         <div class="border-3 border-dotted border-cyan-400 w-30 h-30 rounded-full flex items-center justify-center">
                             <div class="border-3 border-cyan-600 rounded-full w-22 h-22 bg-cyan-600/50 flex items-center justify-center cursor-pointer">
-                                <label for="profile_picture"><img src="/storage/icons/input_camera.png" class="w-12  cursor-pointer" alt="profile-picture-input-logo"></label>
+                                <label for="profile_picture"><img src="/storage/icons/input_camera.png" class="w-12  cursor-pointer" id="preview" alt="profile-picture-input-logo"></label>
                             </div>
                         </div>
                     </div>
-                    <label for="profile_picture" class="border rounded bg-cyan-300/25 border-cyan-500 p-2 flex items-center justify-center font-semibold text-cyan-400 [text-shadow:_0px_0px_20px_5px_rgba(66,_220,_219,_0.5)] cursor-pointer hover:bg-cyna-600/25">ESCANEAR IMAGEM</label>
+                    <label for="profile_picture" class="border rounded bg-cyan-300/25 border-cyan-500 p-2 flex items-center justify-center font-semibold text-cyan-400 [text-shadow:_0px_0px_20px_5px_rgba(66,_220,_219,_0.5)] cursor-pointer hover:bg-cyan-600/25 transition-all">ESCANEAR IMAGEM</label>
                 </div>
             </div>
             <div class="flex flex-col items-center justify-center gap-1">
@@ -48,19 +48,19 @@
                 </div>
                 <div class="w-full flex flex-col gap-2 p-2 justify-center items-center ">
                     <label for="username" class="w-100 pl-2 text-cyan-500 font-semibold">NOME_DE_IDENTIFICAÇÃO:</label>
-                    <input type="text" name="name" placeholder="USERNAME" id="username" class=" p-2 w-96  border border-cyan-500 rounded 3xl text-yellow-300 font-semibold shadow-[0px_0px_10px_5px_rgba(66,_220,_219,_0.25)] " required value="{{old('name')}}">
+                    <input type="text" name="name" placeholder="APELIDO" id="username" class=" p-2 w-96  border border-cyan-500 rounded 3xl text-yellow-300 font-semibold shadow-[0px_0px_10px_5px_rgba(66,_220,_219,_0.25)] " required value="{{old('name')}}">
                 </div>
                 <div class="w-full flex flex-col gap-2 p-2 justify-center items-center ">
                     <label for="email" class="w-100 pl-2 text-cyan-500 font-semibold ">EMAIL_DO_USUÁRIO:</label>
-                    <input type="text" name="email" placeholder="LOGIN (EMAIL)" id="email" class=" p-2 w-96  border border-cyan-500 rounded 3xl text-yellow-300 font-semibold shadow-[0px_0px_10px_5px_rgba(66,_220,_219,_0.25)] " required value="{{old('email')}}">
+                    <input type="text" name="email" placeholder="EMAIL" id="email" class=" p-2 w-96  border border-cyan-500 rounded 3xl text-yellow-300 font-semibold shadow-[0px_0px_10px_5px_rgba(66,_220,_219,_0.25)] " required value="{{old('email')}}">
                 </div>
                 <div class="w-full flex flex-col gap-2 p-2 justify-center items-center ">
-                    <label for="password" class="w-100 pl-2 text-cyan-500 font-semibold ">CÓDIGO_DE_ACESSO:</label>
+                    <label for="password" class="w-100 pl-2 text-cyan-500 font-semibold ">SENHA_DE_ACESSO:</label>
                     <input type="password" name="password" placeholder="SENHA" class=" p-2 w-96  border border-cyan-500 rounded 3xl text-yellow-300 font-semibold shadow-[0px_0px_10px_5px_rgba(66,_220,_219,_0.25)] " required>
                 </div>
                 <div class="w-full flex flex-col gap-2 p-2 justify-center items-center ">
-                    <label for="password_confirmation" class="w-100 pl-2 text-cyan-500 font-semibold ">CONFIRMAÇÃO_CÓDIGO_ACESSO:</label>
-                    <input type="password" name="password_confirmation" placeholder="CONFIRME SENHA" class=" p-2 w-96  border border-cyan-500 rounded 3xl text-yellow-300 font-semibold shadow-[0px_0px_10px_5px_rgba(66,_220,_219,_0.25)] " required>
+                    <label for="password_confirmation" class="w-100 pl-2 text-cyan-500 font-semibold ">CONFIRMAÇÃO_SENHA_ACESSO:</label>
+                    <input type="password" name="password_confirmation" placeholder="CONFIRMAR SENHA" class=" p-2 w-96  border border-cyan-500 rounded 3xl text-yellow-300 font-semibold shadow-[0px_0px_10px_5px_rgba(66,_220,_219,_0.25)] " required>
                 </div>
             </div>
 

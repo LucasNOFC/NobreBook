@@ -4,11 +4,17 @@ namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\Models\User;
+use App\Services\UserService;
 use Illuminate\Support\Facades\Auth;
 
 class UserController extends Controller
 {
+    protected $userService;
+
+    public function __construct(UserService $userService)
+    {
+        $this->userService = $userService;
+    }
     //
 
     public function index()
@@ -26,21 +32,9 @@ class UserController extends Controller
     public function store(Request $request)
     {
 
+        $this->userService->registerUser($request);
 
-        $input = $request->validate([
-            'name' => 'required',
-            'email' => 'required|email',
-            'password' => 'required|min:8|confirmed',
-            'password_confirmation' => 'required|min:8',
-            'profile_picture' => 'required|file',
-        ]);
-
-        if (!empty($input['profile_picture']) && $input['profile_picture']->isValid()) {
-            $url = $input['profile_picture']->store('profiles', 'public');
-            $input['profile_picture'] = $url;
-            User::create($input);
-            return redirect('/');
-        };
+        return redirect()->intended('/');
     }
 
     public function login()
@@ -54,54 +48,25 @@ class UserController extends Controller
 
     public function access(Request $request)
     {
+        $this->userService->loginUser($request);
 
-        $credentials = $request->validate([
-            'email' => 'required|email',
-            'password' => 'required'
-        ]);
-
-        if (Auth::attempt($credentials)) {
-            $request->session()->regenerate();
-
-
-
-            return redirect()->intended('/');
-        }
-
-        return back()->withErrors([
-            'email' => 'Senha ou email inválido'
-        ])->onlyInput('email');
+        return redirect()->intended('/');
     }
 
     public function destroy(Request $request)
     {
 
-        Auth::logout();
+        $this->userService->loggoff($request);
 
-        $request->session()->invalidate();
-        $request->session()->regenerateToken();
-
-        return redirect('/login');
+        return redirect()->intended('/login');
     }
 
     public function profile(int $id)
     {
-        if (Auth::check()) {
+        $profileSearch = $this->userService->profileSearch($id);
 
-            $user = User::find($id);
+        if (!$profileSearch) return redirect()->intended('/404');
 
-            if ($user) {
-                return view(
-                    'users.profile',
-                    [
-                        'user' => $user,
-                        'profile' => Auth::user()->profile
-                    ]
-                );
-            } else {
-                return redirect()->intended('/404');
-            }
-        }
-        return redirect()->intended('/');
+        else return view ('users.profile', $profileSearch);
     }
 }

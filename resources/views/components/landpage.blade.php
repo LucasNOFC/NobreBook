@@ -27,7 +27,7 @@
                     shadow-[0px_0px_20px_5px_rgba(66,_220,_219,_0.5)]
                     hover:bg-cyan-400
                     ">
-                        INVADIR A REDE</a>
+                        REGISTRAR</a>
                     <a href="login" class="
                      text-purple-600
                      border-t-purple-600/95
@@ -37,7 +37,7 @@
                      hover:bg-purple-600/40
                      transition-all
                      p-3 w-75
-                     text-center">HACKEAR O ACESSO</a>
+                     text-center">LOGIN</a>
                 </div>
                 <p class="text-gray-700 text-sm">v4.05.87-stable_distribution</p>
             </div>
