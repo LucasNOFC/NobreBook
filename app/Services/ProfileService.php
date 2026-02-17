@@ -41,7 +41,7 @@ class ProfileService
     public function accessProfile(Profile $profile)
     {
 
-        $this->gate->authorize('update', $profile);
+        $this->gate->authorize('view', $profile);
 
         $user = Auth::user();
 

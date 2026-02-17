@@ -29,7 +29,7 @@ class UserController extends Controller
         return view('users.createuser');
     }
 
-    public function store(Request $request)
+    public function registerUser(Request $request)
     {
 
         $this->userService->registerUser($request);
@@ -46,7 +46,7 @@ class UserController extends Controller
         return view('users.accessuser');
     }
 
-    public function access(Request $request)
+    public function loginUser(Request $request)
     {
         $this->userService->loginUser($request);
 

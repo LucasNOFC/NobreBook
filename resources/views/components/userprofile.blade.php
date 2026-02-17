@@ -1,6 +1,6 @@
     <div class="p-5 h-screen bg-[url('/storage/images/main_background.png')] bg-cover bg-center bg-no-repeat">
         <form
-            action="{{ route('users.profile', ['id' => $user->id]) }}"
+            action="{{ route('users.profile', ['profile']) }}"
             method="POST"
             class="">
             @csrf

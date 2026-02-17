@@ -20,6 +20,8 @@ return new class extends Migration
 
             $table->string('title');
 
+            $table->string('post_picture');
+
             $table->text('body');
             
             $table->timestamps();

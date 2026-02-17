@@ -28,7 +28,7 @@
                 hover:border-t-yellow-600 
                 hover:border-b-yellow-600 
                 transition-all">APLICAR_MODIFICAÇÕES</a>
-            <a href="/"
+            <a href="/profile/{{Auth::user()->id}}/create_post"
                 class="               
                 font-bold
                 cursor-pointer

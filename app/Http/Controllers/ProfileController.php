@@ -5,9 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Controllers\Controller;
 use App\Models\Profile;
 use App\Services\ProfileService;
-use Illuminate\Auth\Access\Gate;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
 
 
 class ProfileController extends Controller
@@ -21,9 +19,8 @@ class ProfileController extends Controller
 
     public function storeProfile(Request $request)
     {
-
         $user = $this->profileService->registerProfile($request);
-
+        
         return redirect()->intended("/profile/{$user->id}");
     }
 

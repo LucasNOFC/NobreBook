@@ -11,6 +11,7 @@
         @yield('accessUsers')
         @yield('profile')
         @yield('profileuser')
+        @yield('postPublication')
         @vite('resources/js/app.js')
     </main>
 </body>

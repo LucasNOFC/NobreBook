@@ -7,10 +7,11 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use App\Models\Profile;
+use App\Models\Post;
 
 class User extends Authenticatable
 {
-    
+
     /** @use HasFactory<\Database\Factories\UserFactory> */
     use HasFactory, Notifiable;
 
@@ -37,6 +38,14 @@ class User extends Authenticatable
         'remember_token',
     ];
 
+    protected static function booted()
+    {
+        static::created(function ($user) {
+            $user->profile()->create([]);
+        });
+       
+    }
+
     /**
      * Get the attributes that should be cast.
      *
@@ -50,8 +59,13 @@ class User extends Authenticatable
         ];
     }
 
-    public function profile() 
+    public function profile()
     {
         return $this->hasOne(Profile::class);
+    }
+
+    public function post()
+    {
+        return $this->hasMany(Post::class);
     }
 }
